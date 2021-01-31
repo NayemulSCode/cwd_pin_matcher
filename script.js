@@ -16,5 +16,14 @@ function generateInput(){
 // all key get by user
 const btnContainer = document.getElementById('inputKeys');
 btnContainer.addEventListener('click',function(event){
-    console.log(event.target.innerText);
+    const digit =  event.target.innerText;
+    if(isNaN(digit)){
+        console.log('alphabet');
+    }
+    else{
+        const typeInput = document.getElementById('typedInput');
+        typeInput.value = typeInput.value + digit;
+    }
+
+   
 })
