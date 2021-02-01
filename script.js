@@ -18,7 +18,9 @@ const btnContainer = document.getElementById('inputKeys');
 btnContainer.addEventListener('click',function(event){
     const digit =  event.target.innerText;
     if(isNaN(digit)){
-        console.log('alphabet');
+       if(digit === 'C'){
+           document.getElementById('typedInput').value = '';
+       }
     }
     else{
         const typeInput = document.getElementById('typedInput');
@@ -29,6 +31,14 @@ btnContainer.addEventListener('click',function(event){
 function verifyPin(){
     const input = document.getElementById('inputValue').value;
     const typeInput = document.getElementById('typedInput').value;
+
+    // const trySubmit  = document.getElementById('submit-try');
+    // const submitCount = parseInt(trySubmit.value);
+    // console.log(submitCount);
+    // if(typeInput === submitCount){
+    //     submitCount
+    // }
+
 
     if(input === typeInput){
         const successMessage = document.getElementById('successPin');
@@ -41,4 +51,9 @@ function verifyPin(){
 
     }
 
+}
+//backspace
+function backSpace(){
+    let currentInput = document.getElementById('typedInput').value;
+    document.getElementById('typedInput').value = currentInput.substr(0, currentInput.length -1);
 }
