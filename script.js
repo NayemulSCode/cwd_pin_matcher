@@ -32,26 +32,33 @@ function verifyPin(){
     const input = document.getElementById('inputValue').value;
     const typeInput = document.getElementById('typedInput').value;
 
-    // const trySubmit  = document.getElementById('submit-try');
-    // const submitCount = parseInt(trySubmit.value);
-    // console.log(submitCount);
-    // if(typeInput === submitCount){
-    //     submitCount
-    // }
-
-
     if(input === typeInput){
-        const successMessage = document.getElementById('successPin');
-        successMessage.style.display = 'block';
+        document.getElementById('successPin');
+      displayMessage('block','none');
 
     }
     else{
-        const errorMessage = document.getElementById('errorPin');
-        errorMessage.style.display = 'block';
-
+        document.getElementById('errorPin');
+        displayMessage('none','block');
+        let trySubmit = Number(document.getElementById('submit-try').textContent -1);
+        if(trySubmit >= 0){
+            document.getElementById('submit-try').textContent = trySubmit;
+        }
+        else{
+            document.getElementById('submissionerror').style.display = 'block';
+            document.getElementById('mainArea').style.display = 'none';
+        }
     }
+}
+//display message
+function displayMessage(sMessage, erMessage){
+    const successpin = document.getElementById('successPin');
+    successpin.style.display = sMessage;
+    const errorpin = document.getElementById('errorPin');
+    errorpin.style.display = erMessage;
 
 }
+
 //backspace
 function backSpace(){
     let currentInput = document.getElementById('typedInput').value;
